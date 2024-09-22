@@ -1,0 +1,15 @@
+
+name: sensor_monitoring_app
+description: A mobile app to monitor sensor statuses
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.2  # For making HTTP requests to the Flask backend
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+environment:
+  sdk: '^3.5.0'
