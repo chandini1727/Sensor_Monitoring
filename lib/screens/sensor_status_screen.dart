@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sensor_monitoring_app/services/api_service.dart';
+//import 'package:flutter/material.dart';
+//import '../api_service.dart';  // Make sure you import your ApiService here
 
 class SensorStatusScreen extends StatefulWidget {
   final String officerId;
@@ -34,17 +36,29 @@ class _SensorStatusScreenState extends State<SensorStatusScreen> {
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return Center(child: Text('No sensors found.'));
           } else {
-            // If data is available, display it in a ListView
-            return ListView.builder(
-              itemCount: snapshot.data!.length,
-              itemBuilder: (context, index) {
-                var sensor = snapshot.data![index];
-                return ListTile(
-                  title: Text('Sensor ID: ${sensor['sensor_id']}'),
-                  subtitle: Text(
-                      'Location: ${sensor['location']}, Battery: ${sensor['battery_level']}%, Water Level: ${sensor['water_level']}m, Status: ${sensor['alert']}'),
-                );
-              },
+            // Display data in a DataTable
+            return SingleChildScrollView(
+              scrollDirection: Axis.horizontal, // Allow horizontal scrolling
+              child: DataTable(
+                columns: const [
+                  DataColumn(label: Text('Sensor ID')),
+                  DataColumn(label: Text('Location')),
+                  DataColumn(label: Text('Battery Level')),
+                  DataColumn(label: Text('Water Level')),
+                  DataColumn(label: Text('Status')),
+                ],
+                rows: snapshot.data!.map<DataRow>((sensor) {
+                  return DataRow(
+                    cells: [
+                      DataCell(Text(sensor['sensor_id'])),
+                      DataCell(Text(sensor['location'])),
+                      DataCell(Text('${sensor['battery_level']}%')),
+                      DataCell(Text('${sensor['water_level']} m')),
+                      DataCell(Text(sensor['alert'])),
+                    ],
+                  );
+                }).toList(),
+              ),
             );
           }
         },
