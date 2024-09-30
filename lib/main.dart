@@ -11,8 +11,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Sensor Monitoring',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.lightBlue,
       ),
+      debugShowCheckedModeBanner: false,
       home: SensorStatusScreen(officerId: 'officer_123'), // Use dynamic officer ID
     );
   }

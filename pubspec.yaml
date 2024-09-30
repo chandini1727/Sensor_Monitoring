@@ -6,6 +6,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^1.2.2  # For making HTTP requests to the Flask backend
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
@@ -13,3 +14,6 @@ dev_dependencies:
 
 environment:
   sdk: '^3.5.0'
+  
+flutter:
+  uses-material-design: true
