@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/sensor_status_screen.dart';
+import 'screens/login_screen.dart'; // Import the login screen
 
 void main() {
   runApp(MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.lightBlue,
       ),
       debugShowCheckedModeBanner: false,
-      home: SensorStatusScreen(officerId: 'officer_123'), // Use dynamic officer ID
+      home: LoginScreen(), // Set the login screen as the home
     );
   }
 }
